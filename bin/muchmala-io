@@ -1,0 +1,10 @@
+#!/usr/bin/env node
+
+var app = require('../');
+var config = require('../config');
+
+app.createServer(config, function(err) {
+  if (err) throw err;
+
+  console.log('IO server is listening on %s:%s', config.host, config.port);
+});
