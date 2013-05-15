@@ -2,7 +2,7 @@ var socket = require('./lib/socket');
 
 exports.createServer = function(config, cb) {
   var http = require('http').createServer();
-  var redis = require('redis').createClient();
+  var redis = require('muchmala-cmn').helpers.redisClient(config.redisUrl);
   var io = socket.createServer(http, redis);
 
   io.configure(function() {
