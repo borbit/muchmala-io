@@ -1,9 +1,12 @@
+var redis = require('redis');
+var parse = require('parse-redis-url');
 var socket = require('./lib/socket');
+redis = parse(redis);
 
 exports.createServer = function(config, cb) {
-  var http = require('http').createServer();
-  var redis = require('muchmala-cmn').helpers.redisClient(config.redisUrl);
-  var io = socket.createServer(http, redis);
+  var httpClient = require('http').createServer();
+  var redisClient = redis.createClient(config.redis);
+  var io = socket.createServer(httpClient, redisClient);
 
   io.configure(function() {
     io.set('transports', ['websocket']);
@@ -14,5 +17,5 @@ exports.createServer = function(config, cb) {
     io.set('log level', 1);
   });
 
-  http.listen(config.port, config.host, cb);
+  httpClient.listen(config.port, config.host, cb);
 };
