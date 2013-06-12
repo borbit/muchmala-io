@@ -6,10 +6,9 @@
     "Serge Borbit <serge.borbit@gmail.com>"
   ],
   "dependencies": {
-    "parse-redis-url": "*",
     "socket.io-mw": "*",
+    "redis-url": "*",
     "lodash": "*",
-    "redis": "*",
     "async": "*"
   }
 }

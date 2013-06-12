@@ -1,7 +1,5 @@
-var redis = require('redis');
-var parse = require('parse-redis-url');
+var redis = require('redis-url');
 var socket = require('./lib/socket');
-redis = parse(redis);
 
 exports.createServer = function(config, cb) {
   var httpClient = require('http').createServer();
